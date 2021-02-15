@@ -1,0 +1,14 @@
+{
+  "name": "lesson-43",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "\"concurrently \"cd server && npm run start\" \"cd public && npm run start\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
