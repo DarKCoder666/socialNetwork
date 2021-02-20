@@ -1,16 +1,20 @@
+import axiosInstance from './axiosInstance'
+
 function signUp({ email, password }) {
-  return this.post('/auth/signup', {
+  return axiosInstance.post('/auth/signup', {
     email, password
   })
 }
 
 function signIn({ email, password }) {
-  return this.post('/auth/signin', {
+  return axiosInstance.post('/auth/signin', {
     email, password
   })
 }
 
-export default axiosInstance => ({
-  signUp: signUp.bind(axiosInstance),
-  signIn: signIn.bind(axiosInstance)
-})
+const authApi = {
+  signUp,
+  signIn
+}
+
+export default authApi

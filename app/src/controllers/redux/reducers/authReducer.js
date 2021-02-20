@@ -6,10 +6,12 @@ import {
   AUTH_RESET_SIGNIN_FORM,
   AUTH_SET_FORM_VALIDATION_ERRORS,
   AUTH_UPDATE_SIGNIN_FORM,
-  AUTH_SET_CURRENT_USER
+  AUTH_SET_CURRENT_USER,
+  AUTH_SET_AUTHORIZATION_STATE
 } from "../actionTypes"
 
 const initialState = {
+  isAuthorized: null,
   currentUser: {},
   users: [],
   lastUserID: 0,
@@ -78,6 +80,11 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         currentUser: action.payload.user
+      }
+    case AUTH_SET_AUTHORIZATION_STATE: 
+      return {
+        ...state,
+        isAuthorized: action.payload.isAuthorized
       }
     default:
       return state

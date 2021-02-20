@@ -3,15 +3,6 @@ import { useHistory } from "react-router-dom"
 import { updateSignInForm, updateSignUpForm } from '../../redux/actions/authActions'
 import { createUser, signIn } from "../../thunks/auth.thunk"
 
-export function AuthLayoutProps() {
-  return {
-    navItems: [
-      { title: 'SignIn', link: '/auth/signin' },
-      { title: 'SignUp', link: '/auth/signup' }
-    ]
-  }
-}
-
 export function useSignUpProps() {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -52,4 +43,10 @@ export function useSignInProps() {
     updateField,
     signIn: () => dispatch(signIn(history))
   }
+}
+
+export function useAuthorizedState() {
+  const authState = useSelector(state => state.auth)
+
+  return authState.isAuthorized
 }
